@@ -1,5 +1,4 @@
 /* eslint-disable @next/next/no-img-element */
-import Logo from '@/components/elements/Logo/Logo'
 import { AllowedLangs } from '@/constants/lang'
 import { setLang } from '@/context/lang'
 import { closeMenu } from '@/context/modals'
@@ -119,9 +118,6 @@ const Menu = () => {
   return (
     <nav className={`nav-menu ${menuIsOpen ? 'open' : 'close'}`}>
       <div className='container nav-menu__container'>
-        <div className={`nav-menu__logo ${menuIsOpen ? 'open' : ''}`}>
-          <Logo />
-        </div>
         <img
           className={`nav-menu__bg ${menuIsOpen ? 'open' : ''}`}
           src={`/img/menu-bg${isMedia800 ? '-small' : ''}.png`}

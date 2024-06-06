@@ -20,26 +20,17 @@ import {
 import { $favorites, $favoritesFromLS } from '@/context/favorites/state'
 import { setLang } from '@/context/lang'
 import { openMenu } from '@/context/modals'
-import { loginCheckFx } from '@/context/user'
 import { useGoodsByAuth } from '@/hooks/useGoodsByAuth'
 import { useLang } from '@/hooks/useLang'
-import {
-  addOverflowHiddenToBody,
-  handleOpenAuthPopup,
-  triggerLoginCheck,
-} from '@/lib/utils/common'
-import { faSpinner } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { addOverflowHiddenToBody, triggerLoginCheck } from '@/lib/utils/common'
 import { useUnit } from 'effector-react'
 import Link from 'next/link'
 import { useEffect } from 'react'
 import CartPopup from './CartPopup/CartPopup'
-import HeaderProfile from './HeaderProfile'
 import Menu from './Menu'
 
 const Header = () => {
   const isAuth = useUnit($isAuth)
-  const loginCheckSpinner = useUnit(loginCheckFx.pending)
   const { lang, translations } = useLang()
   // const user = useUnit($user)
   const currentFavoritesByAuth = useGoodsByAuth($favorites, $favoritesFromLS)
@@ -173,18 +164,6 @@ const Header = () => {
           </li>
           <li className='header__links__item'>
             <CartPopup />
-          </li>
-          <li className='header__links__item header__links__item--profile'>
-            {isAuth ? (
-              <HeaderProfile />
-            ) : loginCheckSpinner ? (
-              <FontAwesomeIcon icon={faSpinner} spin />
-            ) : (
-              <button
-                className='btn-reset header__links__item__btn header__links__item__btn--profile'
-                onClick={handleOpenAuthPopup}
-              />
-            )}
           </li>
         </ul>
       </div>

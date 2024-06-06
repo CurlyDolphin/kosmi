@@ -16,14 +16,18 @@ const Footer = () => {
             <span>
               <a href='tel:+790440381123'>+7 (904) 403 81 12</a>
             </span>
-            <span>
-              <a href='mailto:Kosmi@gmail.com'>Kosmi@gmail.com</a>
-            </span>
+            <span>ТК «Радуга», павильон 24, б-р Профсоюзов, 7Б</span>
           </div>
           <ul className='list-reset footer__socials'>
             <li className='footer__socials__item'>
               <a
                 href='https://vk.com/kosmieparfum'
+                className='footer__socials__item__link'
+              />
+            </li>
+            <li className='footer__socials__item'>
+              <a
+                href='wa.me/79044038112'
                 className='footer__socials__item__link'
               />
             </li>

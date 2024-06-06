@@ -1,8 +1,8 @@
-import { Db, MongoClient, ObjectId } from 'mongodb'
-import jwt, { VerifyErrors } from 'jsonwebtoken'
 import bcrypt from 'bcryptjs'
-import { shuffle } from './common'
+import jwt, { VerifyErrors } from 'jsonwebtoken'
+import { Db, MongoClient, ObjectId } from 'mongodb'
 import { NextResponse } from 'next/server'
+import { shuffle } from './common'
 
 export const getDbAndReqBody = async (
   clientPromise: Promise<MongoClient>,

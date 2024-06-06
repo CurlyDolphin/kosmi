@@ -13,8 +13,8 @@ const MainPage = () => {
 
   return (
     <main>
-      <Hero />
       <Categories />
+      <Hero />
       <NewGoods />
       <BestsellerGoods />
     </main>
