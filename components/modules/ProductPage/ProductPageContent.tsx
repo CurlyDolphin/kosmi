@@ -2,13 +2,11 @@ import ProductAvailable from '@/components/elements/ProductAvailable/ProductAvai
 import ProductItemActionBtn from '@/components/elements/ProductItemActionBtn/ProductItemActionBtn'
 import { setIsAddToFavorites } from '@/context/favorites'
 import { $currentProduct } from '@/context/goods/state'
-import { openShareModal } from '@/context/modals'
 import { useCartAction } from '@/hooks/useCartAction'
 import { useFavoritesAction } from '@/hooks/useFavoritesAction'
 import { useLang } from '@/hooks/useLang'
 import { useWatchedProducts } from '@/hooks/useWatchedProducts'
 import {
-  addOverflowHiddenToBody,
   capitalizeFirstLetter,
   formatPrice,
   getWatchedProductFromLS,
@@ -66,11 +64,6 @@ const ProductPageContent = () => {
     )
   }, [product._id, product.category])
 
-  const handleProductShare = () => {
-    addOverflowHiddenToBody()
-    openShareModal()
-  }
-
   const addToCart = () => {
     setIsAddToFavorites(false)
     handleAddToCart(count)
@@ -116,10 +109,6 @@ const ProductPageContent = () => {
                   callback={handleAddProductToFavorites}
                 />
               </div>
-              <button
-                className={`btn-reset ${styles.product__top__price__share}`}
-                onClick={handleProductShare}
-              />
             </div>
           </div>
           <div className={styles.product__top__available}>

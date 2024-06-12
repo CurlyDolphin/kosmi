@@ -118,11 +118,6 @@ const Menu = () => {
   return (
     <nav className={`nav-menu ${menuIsOpen ? 'open' : 'close'}`}>
       <div className='container nav-menu__container'>
-        <img
-          className={`nav-menu__bg ${menuIsOpen ? 'open' : ''}`}
-          src={`/img/menu-bg${isMedia800 ? '-small' : ''}.png`}
-          alt='menu background'
-        />
         <button
           className={`btn-reset nav-menu__close ${menuIsOpen ? 'open' : ''}`}
           onClick={handleCloseMenu}
