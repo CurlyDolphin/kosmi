@@ -1,9 +1,7 @@
-import { faSpinner } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { useUnit } from 'effector-react'
-import { AnimatePresence, motion } from 'framer-motion'
 import { setFiltersPopup } from '@/context/catalog'
+import { $filtersPopup } from '@/context/catalog/state'
 import { loadProductsByFilterFx } from '@/context/goods'
+import { $products } from '@/context/goods/state'
 import { useCategoryFilter } from '@/hooks/useCategoryFilter'
 import { useLang } from '@/hooks/useLang'
 import { useMenuAnimation } from '@/hooks/useMenuAnimation'
@@ -11,19 +9,17 @@ import {
   removeOverflowHiddenFromBody,
   showCountMessage,
 } from '@/lib/utils/common'
-import { ICatalogFiltersProps } from '@/types/catalog'
-import PriceFilter from './PriceFilter'
-import CategoryFilterList from '../CategoryFilterList'
-import SizesFilter from './SizesFilter'
-import ColorsFilter from './ColorsFilter'
-import { $products } from '@/context/goods/state'
-import { $filtersPopup } from '@/context/catalog/state'
 import styles from '@/styles/catalog/index.module.scss'
+import { ICatalogFiltersProps } from '@/types/catalog'
+import { faSpinner } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { useUnit } from 'effector-react'
+import { AnimatePresence, motion } from 'framer-motion'
+import CategoryFilterList from '../CategoryFilterList'
+import PriceFilter from './PriceFilter'
 
 const FiltersPopup = ({
   handleApplyFiltersWithPrice,
-  handleApplyFiltersWithSizes,
-  handleApplyFiltersWithColors,
 }: Omit<ICatalogFiltersProps, 'handleApplyFiltersBySort'>) => {
   const filtersPopup = useUnit($filtersPopup)
   const products = useUnit($products)
@@ -106,22 +102,6 @@ const FiltersPopup = ({
                   setOption={setOption}
                   allCategoriesTitle={allCategoriesTitle}
                   catalogCategoryOptions={catalogCategoryOptions}
-                />
-              </motion.div>
-              <motion.div
-                className={styles.catalog__filters__popup__sizes}
-                variants={itemVariants}
-              >
-                <SizesFilter
-                  handleApplyFiltersWithSizes={handleApplyFiltersWithSizes}
-                />
-              </motion.div>
-              <motion.div
-                className={styles.catalog__filters__popup__colors}
-                variants={itemVariants}
-              >
-                <ColorsFilter
-                  handleApplyFiltersWithColors={handleApplyFiltersWithColors}
                 />
               </motion.div>
               <motion.button

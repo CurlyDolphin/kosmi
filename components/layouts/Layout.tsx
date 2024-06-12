@@ -1,19 +1,5 @@
 'use client'
-import { useUnit } from 'effector-react'
-import { useRef, MutableRefObject } from 'react'
-import { AnimatePresence, motion } from 'framer-motion'
-import { useMediaQuery } from '@/hooks/useMediaQuery'
-import Header from '../modules/Header/Header'
-import MobileNavbar from '../modules/MobileNavbar/MobileNavbar'
-import SearchModal from '../modules/Header/SearchModal'
-import {
-  handleCloseAuthPopup,
-  handleCloseSearchModal,
-} from '@/lib/utils/common'
-import Footer from '../modules/Footer/Footer'
-import QuickViewModal from '../modules/QuickViewModal/QuickViewModal'
-import SizeTable from '../modules/SizeTable/SizeTable'
-import AuthPopup from '../modules/AuthPopup/AuthPopup'
+import { basePropsForMotion } from '@/constants/motion'
 import { $openAuthPopup } from '@/context/auth/state'
 import {
   $searchModal,
@@ -21,8 +7,21 @@ import {
   $showQuickViewModal,
   $showSizeTable,
 } from '@/context/modals/state'
-import { basePropsForMotion } from '@/constants/motion'
+import { useMediaQuery } from '@/hooks/useMediaQuery'
+import {
+  handleCloseAuthPopup,
+  handleCloseSearchModal,
+} from '@/lib/utils/common'
+import { useUnit } from 'effector-react'
+import { AnimatePresence, motion } from 'framer-motion'
+import { MutableRefObject, useRef } from 'react'
+import AuthPopup from '../modules/AuthPopup/AuthPopup'
+import Footer from '../modules/Footer/Footer'
+import Header from '../modules/Header/Header'
+import SearchModal from '../modules/Header/SearchModal'
+import QuickViewModal from '../modules/QuickViewModal/QuickViewModal'
 import ShareModal from '../modules/ShareModal/ShareModal'
+import SizeTable from '../modules/SizeTable/SizeTable'
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   const isMedia800 = useMediaQuery(800)
@@ -47,7 +46,6 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
     <>
       <Header />
       {children}
-      {isMedia800 && <MobileNavbar />}
       <AnimatePresence>
         {openAuthPopup && (
           <motion.div
