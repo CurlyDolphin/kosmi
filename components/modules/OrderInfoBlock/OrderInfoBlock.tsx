@@ -5,6 +5,7 @@ import { useTotalPrice } from '@/hooks/useTotalPrice'
 import { countWholeCartItemsAmount } from '@/lib/utils/cart'
 import { formatPrice, showCountMessage } from '@/lib/utils/common'
 import styles from '@/styles/order-block/index.module.scss'
+import { OrderInfoBlock } from '@/types/modules'
 import Link from 'next/link'
 import { MutableRefObject, useRef, useState } from 'react'
 
