@@ -11,7 +11,6 @@ import {
   setComparisonFromLS,
   setShouldShowEmptyComparison,
 } from '@/context/comparison'
-import { $comparison, $comparisonFromLs } from '@/context/comparison/state'
 import {
   addProductsFromLSToFavorites,
   setFavoritesFromLS,
@@ -34,7 +33,6 @@ const Header = () => {
   const { lang, translations } = useLang()
   // const user = useUnit($user)
   const currentFavoritesByAuth = useGoodsByAuth($favorites, $favoritesFromLS)
-  const currentComparisonByAuth = useGoodsByAuth($comparison, $comparisonFromLs)
 
   const handleOpenMenu = () => {
     addOverflowHiddenToBody()
@@ -148,16 +146,6 @@ const Header = () => {
               className='header__links__item__btn header__links__item__btn--favorites'
             >
               {!!currentFavoritesByAuth.length && (
-                <span className='not-empty' />
-              )}
-            </Link>
-          </li>
-          <li className='header__links__item'>
-            <Link
-              className='header__links__item__btn header__links__item__btn--compare'
-              href='/comparison'
-            >
-              {!!currentComparisonByAuth.length && (
                 <span className='not-empty' />
               )}
             </Link>

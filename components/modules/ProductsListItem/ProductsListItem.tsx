@@ -5,7 +5,6 @@ import ProductSubtitle from '@/components/elements/ProductSubtitle/ProductSubtit
 import { productsWithoutSizes } from '@/constants/product'
 import { setIsAddToFavorites } from '@/context/favorites'
 import { useCartAction } from '@/hooks/useCartAction'
-import { useComparisonAction } from '@/hooks/useComparisonAction'
 import { useFavoritesAction } from '@/hooks/useFavoritesAction'
 import { useLang } from '@/hooks/useLang'
 import { addProductToCartBySizeTable } from '@/lib/utils/cart'
@@ -30,11 +29,6 @@ const ProductsListItem = ({ item, title }: IProductsListItemProps) => {
     addToFavoritesSpinner,
     isProductInFavorites,
   } = useFavoritesAction(item)
-  const {
-    handleAddToComparison,
-    isProductInComparison,
-    addToComparisonSpinner,
-  } = useComparisonAction(item)
 
   const addToCart = () => {
     setIsAddToFavorites(false)
@@ -111,18 +105,6 @@ const ProductsListItem = ({ item, title }: IProductsListItemProps) => {
                     : 'actions__btn_favorite'
               }`}
               callback={handleAddProductToFavorites}
-            />
-            <ProductItemActionBtn
-              spinner={addToComparisonSpinner}
-              text={translations[lang].product.add_to_comparison}
-              iconClass={`${
-                addToComparisonSpinner
-                  ? 'actions__btn_spinner'
-                  : isProductInComparison
-                    ? 'actions__btn_comparison_checked'
-                    : 'actions__btn_comparison'
-              }`}
-              callback={handleAddToComparison}
             />
           </div>
           <Link
