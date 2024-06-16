@@ -1,11 +1,11 @@
 'use client'
-import Slider from 'react-slick'
-import Link from 'next/link'
-import { useEffect } from 'react'
-import Image, { StaticImageData } from 'next/image'
 import useImagePreloader from '@/hooks/useImagePreloader'
 import { useMediaQuery } from '@/hooks/useMediaQuery'
 import styles from '@/styles/main-page/index.module.scss'
+import Image, { StaticImageData } from 'next/image'
+import Link from 'next/link'
+import { useEffect } from 'react'
+import Slider from 'react-slick'
 
 const MainSlider = ({
   images,
@@ -22,10 +22,7 @@ const MainSlider = ({
   const settings = {
     dots: false,
     infinite: true,
-    slidesToScroll: 1,
     variableWidth: true,
-    autoplay: true,
-    speed: 500,
     arrows: false,
   }
 

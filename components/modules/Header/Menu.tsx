@@ -1,6 +1,4 @@
 /* eslint-disable @next/next/no-img-element */
-import { AllowedLangs } from '@/constants/lang'
-import { setLang } from '@/context/lang'
 import { closeMenu } from '@/context/modals'
 import { $menuIsOpen } from '@/context/modals/state'
 import { useLang } from '@/hooks/useLang'
@@ -21,14 +19,6 @@ const Menu = () => {
   const pathname = usePathname()
   const isMedia800 = useMediaQuery(800)
   const isMedia640 = useMediaQuery(640)
-
-  const handleSwitchLang = (lang: string) => {
-    setLang(lang as AllowedLangs)
-    localStorage.setItem('lang', JSON.stringify(lang))
-  }
-
-  const handleSwitchLangToRu = () => handleSwitchLang('ru')
-  const handleSwitchLangToEn = () => handleSwitchLang('en')
 
   const handleShowCatalogList = () => setActiveListId(1)
   const handleShowContactsList = () => setActiveListId(3)
@@ -122,24 +112,6 @@ const Menu = () => {
           className={`btn-reset nav-menu__close ${menuIsOpen ? 'open' : ''}`}
           onClick={handleCloseMenu}
         />
-        <div className={`nav-menu__lang ${menuIsOpen ? 'open' : ''}`}>
-          <button
-            className={`btn-reset nav-menu__lang__btn ${
-              lang === 'ru' ? 'lang-active' : ''
-            }`}
-            onClick={handleSwitchLangToRu}
-          >
-            RU
-          </button>
-          <button
-            className={`btn-reset nav-menu__lang__btn ${
-              lang === 'en' ? 'lang-active' : ''
-            }`}
-            onClick={handleSwitchLangToEn}
-          >
-            EN
-          </button>
-        </div>
         <ul className={`list-reset nav-menu__list ${menuIsOpen ? 'open' : ''}`}>
           {!isMedia800 && (
             <li className='nav-menu__list__item'>
