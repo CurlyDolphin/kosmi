@@ -10,32 +10,12 @@ import img4 from '@/public/img/categories-img-4.jpg'
 import styles from '@/styles/main-page/index.module.scss'
 import Image from 'next/image'
 import Link from 'next/link'
-import MainSlider from '../MainSlider'
 
 const Categories = () => {
   const { lang, translations } = useLang()
   const isMedia490 = useMediaQuery(490)
   const { handleLoadingImageComplete, imgSpinner } = useImagePreloader()
   const imgSpinnerClass = imgSpinner ? styles.img_loading : ''
-
-  const images = [
-    {
-      src: img1,
-      id: 1,
-      title: translations[lang].main_page.category_souvenirs,
-    },
-    {
-      src: img2,
-      id: 2,
-      title: translations[lang].main_page.category_accessories,
-    },
-    {
-      src: img3,
-      id: 3,
-      title: translations[lang].main_page.category_cloth,
-    },
-    { src: img4, id: 4, title: translations[lang].main_page.category_office },
-  ]
 
   return (
     <section className={styles.categories}>
@@ -111,7 +91,65 @@ const Categories = () => {
               </div>
             </>
           )}
-          {isMedia490 && <MainSlider images={images} />}
+          {isMedia490 && (
+            <div className={styles.mobile__container}>
+              <Link
+                href='/catalog/souvenirs'
+                className={styles.categories__img}
+              >
+                <Image
+                  src={img1}
+                  alt='Духи'
+                  onLoad={handleLoadingImageComplete}
+                  width='250'
+                  height='250'
+                />
+                <span>{translations[lang].main_page.category_souvenirs}</span>
+              </Link>
+              <div>
+                <div>
+                  <Link
+                    href='/catalog/accessories'
+                    className={styles.categories__img}
+                  >
+                    <Image
+                      src={img2}
+                      alt='Accessories'
+                      onLoad={handleLoadingImageComplete}
+                      width='250'
+                      height='250'
+                    />
+                    <span>
+                      {translations[lang].main_page.category_accessories}
+                    </span>
+                  </Link>
+                  <Link
+                    href='/catalog/cloth'
+                    className={styles.categories__img}
+                  >
+                    <Image
+                      src={img3}
+                      alt='Souvenirs'
+                      onLoad={handleLoadingImageComplete}
+                      width='250'
+                      height='250'
+                    />
+                    <span>{translations[lang].main_page.category_cloth}</span>
+                  </Link>
+                </div>
+                <Link href='/catalog/office' className={styles.categories__img}>
+                  <Image
+                    src={img4}
+                    alt='Косметика'
+                    onLoad={handleLoadingImageComplete}
+                    width='250'
+                    height='250'
+                  />
+                  <span>{translations[lang].main_page.category_office}</span>
+                </Link>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </section>
