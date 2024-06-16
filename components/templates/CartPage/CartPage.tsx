@@ -4,6 +4,7 @@ import HeadingWithCount from '@/components/elements/HeadingWithCount/HeadingWith
 import Breadcrumbs from '@/components/modules/Breadcrumbs/Breadcrumbs'
 import CartList from '@/components/modules/CartPage/CartList'
 import EmptyPageContent from '@/components/modules/EmptyPageContent/EmptyPageContent'
+import OrderInfoBlock from '@/components/modules/OrderInfoBlock/OrderInfoBlock'
 import { basePropsForMotion } from '@/constants/motion'
 import { getCartItemsFx } from '@/context/cart'
 import { $cart, $cartFromLs, $shouldShowEmpty } from '@/context/cart/state'
@@ -66,6 +67,11 @@ const CartPage = () => {
                     <CartList />
                   </motion.ul>
                 )}
+              </div>
+              <div className={styles.cart__right}>
+                <div className={styles.cart__right__order}>
+                  <OrderInfoBlock />
+                </div>
               </div>
             </div>
           </div>
