@@ -1,27 +1,27 @@
-import { useState } from 'react'
-import Image from 'next/image'
-import { IFavoriteItem } from '@/types/favorites'
-import { addProductToCart } from '@/context/cart'
-import { useGoodsByAuth } from '@/hooks/useGoodsByAuth'
-import DeleteItemBtn from '@/components/elements/DeleteCartItemBtn/DeleteCartItemBtn'
 import AddToCartIcon from '@/components/elements/AddToCartIcon/AddToCartIcon'
-import { useMediaQuery } from '@/hooks/useMediaQuery'
+import DeleteItemBtn from '@/components/elements/DeleteCartItemBtn/DeleteCartItemBtn'
+import { addProductToCart } from '@/context/cart'
+import { $cart, $cartFromLs } from '@/context/cart/state'
+import {
+  deleteProductFromFavorites,
+  setFavoritesFromLS,
+  setShouldShowEmptyFavorites,
+} from '@/context/favorites'
+import { useGoodsByAuth } from '@/hooks/useGoodsByAuth'
 import { useLang } from '@/hooks/useLang'
+import { useMediaQuery } from '@/hooks/useMediaQuery'
+import { useProductDelete } from '@/hooks/useProductDelete'
+import { addCartItemToLS } from '@/lib/utils/cart'
 import {
   deleteProductFromLS,
   formatPrice,
   isUserAuth,
 } from '@/lib/utils/common'
 import styles from '@/styles/favorites/index.module.scss'
-import { addCartItemToLS } from '@/lib/utils/cart'
 import { IProduct } from '@/types/common'
-import {
-  deleteProductFromFavorites,
-  setFavoritesFromLS,
-  setShouldShowEmptyFavorites,
-} from '@/context/favorites'
-import { useProductDelete } from '@/hooks/useProductDelete'
-import { $cart, $cartFromLs } from '@/context/cart/state'
+import { IFavoriteItem } from '@/types/favorites'
+import Image from 'next/image'
+import { useState } from 'react'
 
 const FavoritesListItem = ({ item }: { item: IFavoriteItem }) => {
   const currentCartByAuth = useGoodsByAuth($cart, $cartFromLs)
