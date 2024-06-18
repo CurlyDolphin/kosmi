@@ -46,11 +46,6 @@ const OrderInfoBlock = ({
             {formatPrice(animatedPrice)} ₽
           </span>
         </p>
-        <p className={styles.order_block__info}>
-          <span className={styles.order_block__info__text}>
-            {priceWithDiscount} ₽
-          </span>
-        </p>
         {isOrderPage && <></>}
         <p className={styles.order_block__total}>
           <span>{translations[lang].order.total}:</span>
