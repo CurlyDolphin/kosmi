@@ -47,7 +47,6 @@ const OrderInfoBlock = ({
           </span>
         </p>
         <p className={styles.order_block__info}>
-          {translations[lang].order.amount_with_discounts}:{' '}
           <span className={styles.order_block__info__text}>
             {priceWithDiscount} ₽
           </span>
