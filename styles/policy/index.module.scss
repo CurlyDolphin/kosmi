@@ -1,5 +1,6 @@
 .policy {
-  h1, h3 {
+  h1,
+  h3 {
     color: #9466ff;
   }
 
@@ -15,4 +16,9 @@
   strong {
     color: #9466ff;
   }
+}
+
+ul,
+li {
+  list-style: none;
 }

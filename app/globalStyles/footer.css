@@ -12,6 +12,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  text-align: center;
+}
+
+.footer__logo {
 }
 
 .footer__logo,
